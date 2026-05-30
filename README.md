@@ -15,13 +15,39 @@ cd git
 
 ## Self-hosted：把 Mac 注册进池子
 
-1. 在设置界面把语言切换为中文，方便后续按中文提示操作。
-2. 打开 Self-hosted 控制台，进入 `My Machines`。
-3. 在页面上复制为当前池子生成的 CLI 安装命令。
-4. 回到要注册的 Mac 本机，打开 Terminal。
-5. 粘贴并运行刚复制的 CLI 命令，按提示完成安装和启动。
-6. 如果系统提示授权自动化操作，在本机 Mac 打开 `系统设置`，到 `隐私与安全性` 中允许相关应用或 CLI 的自动化、辅助功能、屏幕录制等权限。
-7. 权限授权完成后，回到本机 Mac 继续运行或重启 CLI。
-8. 回到 `My Machines` 页面，确认这台 Mac 显示为在线或可用状态。
+### Cursor 网页切换中文
 
-注意：CLI 命令通常绑定当前账号、组织或池子，只在要注册的 Mac 本机运行，不要在云端机器或其他电脑上执行。
+1. 打开 Cursor 网页版。
+2. 进入右上角头像或设置菜单。
+3. 找到 `Language` 或 `语言`，选择 `中文`。
+4. 刷新页面，确认 Self-hosted、`My Machines` 等页面显示为中文界面。
+
+### 在 `mac.lan` 本机运行 CLI
+
+1. 打开 Self-hosted 控制台，进入 `My Machines`。
+2. 在页面上复制为当前池子生成的 CLI 安装命令。
+3. 回到要注册的 `mac.lan` 本机，打开 Terminal。
+4. 在 `mac.lan` 本机运行下面的代码，并把占位行替换成 `My Machines` 页面复制的完整 CLI 命令：
+
+```bash
+# 必须在 mac.lan 本机 Terminal 里运行
+hostname
+scutil --get LocalHostName
+
+# 不要原样运行这一行；用 My Machines 页面复制出的完整 CLI 命令替换它
+<PASTE_MY_MACHINES_CLI_COMMAND_HERE>
+```
+
+### 授权 `mac.lan` 上的 Cursor 自动化
+
+1. 如果系统提示授权自动化操作，在 `mac.lan` 本机打开 `系统设置`。
+2. 进入 `隐私与安全性`，允许 Cursor、Cursor CLI 或 self-hosted CLI 使用需要的权限：
+   - `自动化`
+   - `辅助功能`
+   - `屏幕录制`
+   - `文件与文件夹` 或 `完全磁盘访问`（如页面或 CLI 提示需要）
+   - `开发者工具`（如页面或 CLI 提示需要）
+3. 授权完成后，回到 `mac.lan` 的 Terminal，继续运行或重启刚才的 CLI。
+4. 回到 `My Machines` 页面，确认这台 Mac 显示为在线或可用状态。
+
+注意：页面复制的 CLI 命令通常绑定当前账号、组织或池子，可能包含一次性 token。只在要注册的 `mac.lan` 本机运行，不要在云端机器、其他电脑、README 或聊天记录中公开真实命令。
